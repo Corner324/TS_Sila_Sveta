@@ -1,6 +1,22 @@
-<h1>Uploaded Images</h1>
-<ul>
-    {% for image in images %}
-        <li><img src="{{ image.image.url }}" alt="Uploaded Image" width="200"></li>
-    {% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <h1 class="text-center">Загруженные изображения</h1>
+        <div class="row">
+            {% for image in images %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ image.image.url }}" class="card-img-top" alt="Загруженное изображение">
+                    <div class="card-body">
+                        <p class="card-text">Загружено {{ image.uploaded_at }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

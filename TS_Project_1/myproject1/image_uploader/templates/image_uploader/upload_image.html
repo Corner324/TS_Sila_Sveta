@@ -1,6 +1,18 @@
-<h1>Upload Image</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-</form>
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <h1 class="text-center">Загрузить изображение</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.image.label_tag }}
+                {{ form.image|add_class:"form-control-file" }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Загрузить</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

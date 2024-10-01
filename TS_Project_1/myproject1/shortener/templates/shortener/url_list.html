@@ -1,6 +1,26 @@
-<h1>All URLs</h1>
-<ul>
-    {% for url in urls %}
-        <li>{{ url.short_url }} -> <a href="{{ url.original_url }}">{{ url.original_url }}</a></li>
-    {% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% load custom_filters_shortener %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <h1 class="text-center">Все сокращённые ссылки</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Короткая ссылка</th>
+                    <th>Оригинальная ссылка</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for url in urls %}
+                <tr>
+                    <td><a href="{{ url.original_url }}">{{ url.short_url }}</a></td>
+                    <td><a href="{{ url.original_url }}">{{ url.original_url }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,18 @@
-<h1>Shorten URL</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Shorten</button>
-</form>
+{% extends 'base.html' %}
+{% load custom_filters_shortener %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <h1 class="text-center">Сократить ссылку</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.original_url.label_tag }}
+                {{ form.original_url|add_class:"form-control" }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Сократить</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
